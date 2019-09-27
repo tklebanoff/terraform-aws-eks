@@ -92,6 +92,11 @@ output "workers_default_ami_id" {
   value       = data.aws_ami.eks_worker.id
 }
 
+output "workers_default_ami_id_GPU" {
+  description = "ID of the default worker group AMI for GPU"
+  value       = data.aws_ami.eks_gpu_worker.id
+}
+
 output "workers_launch_template_ids" {
   description = "IDs of the worker launch templates."
   value       = aws_launch_template.workers_launch_template.*.id

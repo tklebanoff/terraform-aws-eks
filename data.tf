@@ -28,6 +28,18 @@ data "aws_ami" "eks_worker" {
   owners = ["602401143452"]
 }
 
+data "aws_ami" "eks_gpu_worker" {
+  filter {
+    name   = "name"
+    values = ["amazon-eks-gpu-node-${var.cluster_version}-${var.worker_ami_name_filter}"]
+  }
+
+  most_recent = true
+
+  # Owner ID of AWS EKS team
+  owners = ["602401143452"]
+}
+
 data "aws_iam_policy_document" "cluster_assume_role_policy" {
   statement {
     sid = "EKSClusterAssumeRole"
